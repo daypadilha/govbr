@@ -138,6 +138,7 @@ view: view_obt_estabelecimentos {
     label: "Opção MEI"
     sql: ${TABLE}.in_opcao_mei ;;
   }
+
   dimension: in_opcao_simples {
     type: string
     label: "Opção Simples"
@@ -184,6 +185,7 @@ view: view_obt_estabelecimentos {
     sql: ${TABLE}.nm_razao_social ;;
   }
   dimension: nr_cnpj_basico {
+    hidden: yes
     type: string
     label: "CNPJ Básico"
     sql: ${TABLE}.nr_cnpj_basico ;;
@@ -194,9 +196,19 @@ view: view_obt_estabelecimentos {
     sql: ${TABLE}.nr_cnpj_dv ;;
   }
   dimension: nr_cnpj_ordem {
+    hidden: yes
     type: string
     label: "CNPJ Ordem"
     sql: ${TABLE}.nr_cnpj_ordem ;;
+  }
+  dimension: nr_cnpj_completo {
+    label: "CNPJ Completo"
+    sql: LPAD(${TABLE}.nr_cnpj_basico, 8, '0') || LPAD(${TABLE}.nr_cnpj_ordem, 4, '0') || LPAD(${TABLE}.nr_cnpj_dv, 2, '0') ;;
+    link: {
+      label: "Consultar na Receita Federal"
+      url: "https://www.cnpjs.info/{{ value }}"
+      icon_url: "https://www.google.com/s2/favicons?domain=cnpjs.info"
+    }
   }
   dimension: nr_ddd_1 {
     type: string
@@ -241,5 +253,10 @@ view: view_obt_estabelecimentos {
   measure: count {
     type: count
     label: "Quantidade"
+    drill_fields: [nm_fantasia, nm_razao_social, nr_cnpj_completo]
+  }
+  measure: count_distinct_cnpj {
+    type: count_distinct
+    sql: ${nr_cnpj_completo} ;;
   }
 }
