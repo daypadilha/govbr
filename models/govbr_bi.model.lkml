@@ -30,7 +30,7 @@ explore: view_obt_estabelecimentos {
   description: "Analisa estabelecimentos com informações de CNAE e localidades, sem exibir campos duplicados desnecessários."
 
   join: view_tb_cnaes {
-    label: "CNAE detalhado"
+    # label: "CNAE detalhado"
     type: left_outer
     sql_on: ${view_obt_estabelecimentos.cd_cnae_fiscal_principal} = ${view_tb_cnaes.id_subclasse} ;;
     relationship: many_to_one
@@ -50,7 +50,7 @@ explore: view_obt_estabelecimentos {
   }
 
   join: view_tb_localidades {
-    label: "Localidade detalhada"
+    # label: "Localidade detalhada"
     type: left_outer
     sql_on: ${view_obt_estabelecimentos.cd_municipio} = ${view_tb_localidades.id_municipio} ;;
     relationship: many_to_one
