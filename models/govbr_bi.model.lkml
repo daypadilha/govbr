@@ -32,7 +32,7 @@ explore: view_obt_estabelecimentos {
   join: view_tb_cnaes {
     # label: "CNAE detalhado"
     type: left_outer
-    sql_on: ${view_obt_estabelecimentos.cd_cnae_fiscal_principal} = ${view_tb_cnaes.id_subclasse} ;;
+    sql_on: ${view_obt_estabelecimentos.cd_cnae_fiscal_principal} = ${view_tb_cnaes.id_classe} ;;
     relationship: many_to_one
     view_label: "CNAE"
     fields: [
