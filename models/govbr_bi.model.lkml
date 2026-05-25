@@ -27,45 +27,5 @@ persist_with: govbr_bi_default_datagroup
 
 explore: view_obt_estabelecimentos {
   label: "Estabelecimentos"
-  description: "Analisa estabelecimentos com informações de CNAE e localidades, sem exibir campos duplicados desnecessários."
-
-  join: view_tb_cnaes {
-    # label: "CNAE detalhado"
-    type: left_outer
-    sql_on: ${view_obt_estabelecimentos.cd_cnae_fiscal_principal} = ${view_tb_cnaes.id_subclasse} ;;
-    relationship: many_to_one
-    view_label: "CNAE"
-    # fields: [
-    #   id_secao,
-    #   ds_secao,
-    #   id_divisao,
-    #   ds_divisao,
-    #   id_grupo,
-    #   ds_grupo,
-    #   id_classe,
-    #   ds_classe,
-    #   id_subclasse,
-    #   ds_subclasse
-    # ]
-  }
-
-  join: view_tb_localidades {
-    # label: "Localidade detalhada"
-    type: left_outer
-    sql_on: ${view_obt_estabelecimentos.cd_municipio} = ${view_tb_localidades.id_municipio} ;;
-    relationship: many_to_one
-    view_label: "Localidades"
-    # fields: [
-    #   id_regiao,
-    #   nm_regiao,
-    #   sg_regiao,
-    #   id_uf,
-    #   nm_uf,
-    #   sg_uf,
-    #   id_mesorregiao,
-    #   nm_mesorregiao,
-    #   id_microrregiao,
-    #   nm_microrregiao
-    # ]
-  }
+  description: "Analisa estabelecimentos com informações de CNAE e localidades"
 }
