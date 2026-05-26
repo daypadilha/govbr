@@ -34,10 +34,10 @@ view: view_obt_estabelecimentos {
     sql: ${TABLE}.cd_motivo_situacao_cadastral ;;
   }
   dimension: cd_municipio {
-    type: string
+    type: number
     group_label: "Endereço"
     label: "Código Município"
-    sql: ${TABLE}.cd_municipio ;;
+    sql: cast(${TABLE}.cd_municipio as integer) ;;
   }
   dimension: cd_pais {
     type: string

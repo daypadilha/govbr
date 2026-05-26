@@ -27,4 +27,5 @@ persist_with: govbr_bi_default_datagroup
 
 explore: view_obt_estabelecimentos {
   label: "Estabelecimentos"
+  description: "Analisa estabelecimentos com informações de CNAE e localidades"
 }
